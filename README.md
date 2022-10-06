@@ -60,13 +60,12 @@ Ik heb geprobeerd om de bestanden nog een keer te downloaden, maar dat werkte ni
 Dit was het antwoord:
 "When you see a "No such file or directory" error it almost always means you need to install the library that contains the missing file. Often the code you're compiling will come with documentation (either a comment or separate document) that tells you where to get the library dependencies" (bron: https://forum.arduino.cc/t/fatal-error-arduinoble-h-no-such-file-or-directory/922962)
 
+Ik heb via https://github.com/adafruit/Adafruit_MQTT_Library/releases/tag/2.4.3 de zip gedownload en in de library gezet van arduino. Ik heb dit biij ArduinoHttpClient en Adafruit_MQTT gedaan.
 
-Upload de code
-Activeer de ‘Serial Monitor’ 
-Open de serial monitor (tab onderaan)
-Zet de serial monitor op 115200 baud
-Als alles gelukt is zie je in de serial monitor dat je verbonden bent 
-Verander nu in Adafruit IO de kleur, dat zie je terug in de Serial monitor
-Is je ledstrip ook goed aangesloten, dan kun je met de colorpicker de LED kleur aanpassen. Je hebt dus zelf een Philips (Signify) HUE gemaakt. Voor een paar euro. Adafruit draait ook op je mobiel, dus kun je nu (bijna) alles in het filmpje van Les1 
+
+Upload de code > Activeer de ‘Serial Monitor’ > Open de serial monitor > serial monitor op 115200 baud
+De serial monitor is verbonden en geeft de kleuren door.
+Nu heb ik het probleem dat mijn led de hele tijd knippert met verschillende kleuren ipv de kleur die ik heb geselecteerd bij Adafruit.
+Helaas is het me tot nu toe niet gelukt om het klipperen te stoppen.
 
 
