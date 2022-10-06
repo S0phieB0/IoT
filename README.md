@@ -66,7 +66,7 @@ Ik heb via https://github.com/adafruit/Adafruit_MQTT_Library/releases/tag/2.4.3 
 Upload de code > Activeer de ‘Serial Monitor’ > Open de serial monitor > serial monitor op 115200 baud
 De serial monitor is verbonden en geeft de kleuren door.
 Nu heb ik het probleem dat mijn led de hele tijd knippert met verschillende kleuren ipv de kleur die ik heb geselecteerd bij Adafruit.
-Helaas is het me tot nu toe niet gelukt om het klipperen te stoppen.
+Waarschijnlijk was er een oude code die er nog in zat. Ik heb later mijn arduino opnieuw in mijn computer gezet en de app opnieuw opgestart en toen werkte het wel.
 
 
 ### Mijn code:
