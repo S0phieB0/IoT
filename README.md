@@ -69,3 +69,106 @@ Nu heb ik het probleem dat mijn led de hele tijd knippert met verschillende kleu
 Helaas is het me tot nu toe niet gelukt om het klipperen te stoppen.
 
 
+### Mijn code:
+
+
+
+/************************** Configuration ***********************************/
+
+#include "config.h"
+
+/************************ Example Starts Here *******************************/
+
+#include "Adafruit_NeoPixel.h"
+
+#define PIXEL_PIN     D5
+#define PIXEL_COUNT   24
+#define PIXEL_TYPE    NEO_GRB + NEO_KHZ800
+
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(PIXEL_COUNT, PIXEL_PIN, PIXEL_TYPE);
+
+// set up the 'color' feed
+AdafruitIO_Feed *color = io.feed("color");
+
+void setup() {
+
+  // start the serial connection
+  Serial.begin(115200);
+
+  // wait for serial monitor to open
+  while(! Serial);
+
+  // connect to io.adafruit.com
+  Serial.print("Connecting to Adafruit IO");
+  io.connect();
+
+  color->onMessage(handleMessage);
+
+  // wait for a connection
+  while(io.status() < AIO_CONNECTED) {
+    Serial.print(".");
+    delay(500);
+  }
+
+  // we are connected
+  Serial.println();
+  Serial.println(io.statusText());
+  color->get();
+
+  // neopixel init
+  pixels.begin();
+  pixels.show();
+
+}
+
+void loop() {
+
+  io.run();
+
+}
+
+void handleMessage(AdafruitIO_Data *data) {
+
+  // print RGB values and hex value
+  Serial.println("Received HEX: ");
+  Serial.println(data->value());
+
+  long color = data->toNeoPixel();
+
+  for(int i=0; i<PIXEL_COUNT; ++i) {
+    pixels.setPixelColor(i, color);
+  }
+
+  pixels.show();
+
+}
+
+
+/************************ Adafruit IO Config *******************************/
+
+#define IO_USERNAME  “*******”
+#define IO_KEY       “******************”
+
+/******************************* WIFI **************************************/
+
+
+
+#define WIFI_SSID “********”
+#define WIFI_PASS “*******”
+
+#if defined(USE_AIRLIFT) || defined(ADAFRUIT_METRO_M4_AIRLIFT_LITE) ||         \
+    defined(ADAFRUIT_PYPORTAL)
+#if !defined(SPIWIFI_SS) // if the wifi definition isnt in the board variant
+#define SPIWIFI SPI
+#define SPIWIFI_SS 10 // Chip select pin
+#define NINA_ACK 9    // a.k.a BUSY or READY pin
+#define NINA_RESETN 6 // Reset pin
+#define NINA_GPIO0 -1 // Not connected
+#endif
+AdafruitIO_WiFi io(IO_USERNAME, IO_KEY, WIFI_SSID, WIFI_PASS, SPIWIFI_SS,
+                   NINA_ACK, NINA_RESETN, NINA_GPIO0, &SPIWIFI);
+#else
+AdafruitIO_WiFi io(IO_USERNAME, IO_KEY, WIFI_SSID, WIFI_PASS);
+#endif
+
+
