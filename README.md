@@ -5,10 +5,10 @@
 ### Items
 To do this you will need the following:
 
-NodeMCU
-LED strip
-Arduino IDE
-Wifi connection (not 5GHz)
+- NodeMCU
+- LED strip
+- Arduino IDE
+- Wifi connection (not 5GHz)
 
 ### Stap 1: installeer Adafruit IO Arduino (problemen met instaleren)
 
