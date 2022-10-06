@@ -2,6 +2,14 @@
 
 ## ToDo2Tech
 
+### Items
+To do this you will need the following:
+
+NodeMCU
+LED strip
+Arduino IDE
+Wifi connection (not 5GHz)
+
 ### Stap 1: installeer Adafruit IO Arduino (problemen met instaleren)
 
 Het idee was dat ik het gewoon kon downlaoden vanuit de library, maar dat werkte niet bij mij. Ik volgde de stappen van https://learn.adafruit.com/adafruit-all-about-arduino-libraries-install-use/installing-a-library-on-mac-osx en downloaded de zip van https://github.com/adafruit/Adafruit_IO_Arduino/releases.
